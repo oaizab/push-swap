@@ -1,5 +1,6 @@
 SDIR	=	src
-SRCS	=
+SRCS	=	main.c stack.c operations_1.c operations_2.c \
+			operations_3.c
 
 ODIR	=	obj
 OBJS	=	$(addprefix $(ODIR)/,$(SRCS:.c=.o))
@@ -33,7 +34,9 @@ $(ODIR)/%.o: $(SDIR)/%.c $(HEADER)
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS)
+	@echo "------------------------libft-----------------------"
 	@make -C libft
+	@echo "------------------------done------------------------"
 	@mkdir -p $(OUTPUT)
 	@echo "$(CYAN)Creating  $(YELLOW)push_swap ...$(CLEAR)"
 	@$(CC) $(OBJS) $(LIBS) -o $(OUTPUT)/$(NAME)

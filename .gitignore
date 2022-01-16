@@ -5,3 +5,4 @@ obj/
 bin/
 push_swap
 !.gitignore
+checker_Mac
