@@ -27,18 +27,19 @@ BLUE	=	\033[0;34m
 CYAN	=	\033[0;36m
 GREEN	=	\033[0;32m
 YELLOW	=	\033[1;33m
+CLEAR	=	\033[m
 # ----------------------------------------------------------------------------
 
 all:		$(NAME)
 
 $(ODIR)/%.o: $(SDIR)/%.c $(HEADER)
 			@mkdir -p $(@D)
-			@echo "$(BLUE)Compiling $(GREEN)$(basename $(@F))"
+			@echo "$(BLUE)Compiling $(GREEN)$(basename $(@F))$(CLEAR)"
 			@$(CC) $(CFLAGS) -I$(IDIR) -c $< -o $@
 
 $(NAME):	$(OBJS)
 			@mkdir -p $(OUTPUT)
-			@echo "$(CYAN)Creating  $(YELLOW)libft ..."
+			@echo "$(CYAN)Creating  $(YELLOW)libft ...$(CLEAR)"
 			@$(AR) $(OUTPUT)/$(NAME) $(OBJS)
 
 clean:
