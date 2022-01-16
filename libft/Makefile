@@ -41,8 +41,6 @@ $(NAME):	$(OBJS)
 			@echo "$(CYAN)Creating  $(YELLOW)libft ..."
 			@$(AR) $(OUTPUT)/$(NAME) $(OBJS)
 
-
-
 clean:
 			@$(RM) $(OBJS) $(ODIR)
 
