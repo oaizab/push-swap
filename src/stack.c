@@ -6,7 +6,7 @@
 /*   By: oaizab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 13:13:16 by oaizab            #+#    #+#             */
-/*   Updated: 2022/01/16 16:55:58 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/01/17 15:46:39 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_clear_stack(t_stack **stack)
 	}
 }
 
-int	ft_isempti(t_stack *stack)
+int	ft_top(t_stack *stack)
 {
-	return (stack == NULL);
+	return (stack->nbr);
 }

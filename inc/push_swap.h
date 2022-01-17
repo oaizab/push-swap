@@ -6,7 +6,7 @@
 /*   By: oaizab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 12:45:52 by oaizab            #+#    #+#             */
-/*   Updated: 2022/01/16 17:24:30 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/01/17 15:46:19 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_stack	*ft_new_node(int nbr);
 void	ft_push(t_stack **stack, int nbr);
 int		ft_pop(t_stack **stack);
 void	ft_clear_stack(t_stack **stack);
-int		ft_isempti(t_stack *stack);
+int		ft_top(t_stack *stack);
 
 //
 // Stack operation functions
@@ -48,5 +48,11 @@ void	ft_rotate_a(t_stack **stack);
 void	ft_rrotate_a(t_stack **stack);
 void	ft_rotate_ab(t_stack **stack_1, t_stack **stack_2);
 void	ft_rrotate_ab(t_stack **stack_1, t_stack **stack_2);
+
+//
+// Sorting function
+//
+
+void	ft_sort(t_stack **stack_1, t_stack **stack_2);
 
 #endif
