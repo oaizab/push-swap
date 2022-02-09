@@ -1,6 +1,5 @@
 SDIR	=	src
-SRCS	=	main.c stack.c operations_1.c operations_2.c \
-			operations_3.c
+SRCS	=	main.c 
 
 ODIR	=	obj
 OBJS	=	$(addprefix $(ODIR)/,$(SRCS:.c=.o))
