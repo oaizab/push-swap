@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 08:35:14 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 09:45:10 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/10 11:23:24 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,18 @@ void	ft_push(t_stack *s, int n)
 		s->head = l;
 	}
 	s->size++;
+}
+
+int	ft_pop(t_stack *s)
+{
+	int		n;
+	t_slist	*tmp;
+
+	n = s->head->nbr;
+	s->size--;
+	tmp = s->head;
+	s->head = s->head->next;
+	if (s->size == 0)
+		s->tail = NULL;
+	return (n);
 }

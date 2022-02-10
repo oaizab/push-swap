@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 10:11:45 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 14:23:08 by oaizab           ###   ########.fr       */
+/*   Created: 2022/02/09 15:03:49 by oaizab            #+#    #+#             */
+/*   Updated: 2022/02/10 15:17:57 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_show(t_stack a, t_stack b)
+int	main()
 {
-	int	i;
-
-	i = ft_max(a.size, b.size);
-	printf("=======\n");
-	while (i > 0)
+	t_stack *a = ft_stack();
+	t_stack *b = ft_stack();
+	int t[] = {10, 7, 3, 8, 9, 0, 4, 6, 1, 2};
+	for (int i = 9; i >= 0; i--)
 	{
-		if (a.size >= i)
-		{
-			printf("%3d", a.head->nbr);
-			a.head = a.head->next;
-		}
-		else
-			printf("   ");
-		printf(" ");
-		if (b.size >= i)
-		{
-			printf("%3d", b.head->nbr);
-			b.head = b.head->next;
-		}
-		else
-			printf("   ");
-		printf("\n");
-		i--;
+		ft_push(a, t[i]);
 	}
-	printf("___ ___\n");
-	printf("  a   b\n");
+	push_b(a, b);
+	ft_show(*a, *b);
+	return 0;
 }

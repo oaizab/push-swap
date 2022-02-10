@@ -2,7 +2,12 @@ SDIR	=	src
 SRCS	=	main.c \
 			stack.c \
 			lis.c \
-			utils.c
+			utils.c \
+			px.c \
+			sx.c \
+			rx.c \
+			rrx.c \
+			push_b.c
 
 ODIR	=	obj
 OBJS	=	$(addprefix $(ODIR)/,$(SRCS:.c=.o))
@@ -17,7 +22,7 @@ LIBS	=	-Llibft/lib -lft
 NAME	=	push_swap
 CC		=	cc
 RM		=	rm -rf
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -g
 OUTPUT	=	./
 
 # ----------------Colors------------------------------------------------------

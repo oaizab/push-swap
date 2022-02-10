@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 12:45:52 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 10:12:21 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/10 13:53:27 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,23 @@ typedef struct s_stack
 
 t_stack	*ft_stack(void);
 void	ft_push(t_stack *stack, int nbr);
-int		ft_pop(t_stack **stack);
+int		ft_pop(t_stack *s);
 void	ft_clear_stack(t_stack **stack);
 int		ft_top(t_stack *stack);
-void	ft_show(t_stack s);
+void	ft_show(t_stack a, t_stack b);
+void	push_b(t_stack *a, t_stack *b);
 
 //
 // Stack operation functions
 //
 
-void	ft_swap_a(t_stack **stack);
-void	ft_swap_ab(t_stack **stack_1, t_stack **stack_2);
-void	ft_push_a(t_stack **stack_1, t_stack **stack_2);
-void	ft_rotate_a(t_stack **stack);
-void	ft_rrotate_a(t_stack **stack);
-void	ft_rotate_ab(t_stack **stack_1, t_stack **stack_2);
-void	ft_rrotate_ab(t_stack **stack_1, t_stack **stack_2);
+void	sx(t_stack *s, char *msg);
+void	ss(t_stack *a, t_stack *b, char *msg);
+void	px(t_stack *from, t_stack *to, char *msg);
+void	rx(t_stack *s, char *msg);
+void	rr(t_stack *a, t_stack *b, char *msg);
+void	rrx(t_stack *s, char *msg);
+void	rrr(t_stack *a, t_stack *b, char *msg);
 
 //
 // Sorting function

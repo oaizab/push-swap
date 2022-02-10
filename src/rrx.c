@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   rrx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 10:11:45 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 14:23:08 by oaizab           ###   ########.fr       */
+/*   Created: 2022/02/10 12:10:27 by oaizab            #+#    #+#             */
+/*   Updated: 2022/02/10 15:03:32 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_show(t_stack a, t_stack b)
+void	rrx(t_stack *s, char *msg)
 {
-	int	i;
+	t_slist	*tmp;
 
-	i = ft_max(a.size, b.size);
-	printf("=======\n");
-	while (i > 0)
+	if (s->size == 2)
+		sx(s, NULL);
+	else if (s->size > 2)
 	{
-		if (a.size >= i)
-		{
-			printf("%3d", a.head->nbr);
-			a.head = a.head->next;
-		}
-		else
-			printf("   ");
-		printf(" ");
-		if (b.size >= i)
-		{
-			printf("%3d", b.head->nbr);
-			b.head = b.head->next;
-		}
-		else
-			printf("   ");
-		printf("\n");
-		i--;
+		tmp = s->tail->prev;
+		tmp->next = NULL;
+		s->tail->next = s->head;
+		s->tail->prev = NULL;
+		s->head->prev = s->tail;
+		s->head = s->tail;
+		s->tail = tmp;
 	}
-	printf("___ ___\n");
-	printf("  a   b\n");
+	if (msg && (s->size >= 2))
+		ft_printf("%s\n", msg);
+}
+
+void	rrr(t_stack *a, t_stack *b, char *msg)
+{
+	rrx(a, NULL);
+	rrx(b, NULL);
+	if (msg)
+		ft_printf("%s\n", msg);
 }

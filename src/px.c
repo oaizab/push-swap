@@ -1,44 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   px.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 10:11:45 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 14:23:08 by oaizab           ###   ########.fr       */
+/*   Created: 2022/02/10 10:31:36 by oaizab            #+#    #+#             */
+/*   Updated: 2022/02/10 13:50:31 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_show(t_stack a, t_stack b)
+void	px(t_stack *from, t_stack *to, char *msg)
 {
-	int	i;
+	int	n;
 
-	i = ft_max(a.size, b.size);
-	printf("=======\n");
-	while (i > 0)
-	{
-		if (a.size >= i)
-		{
-			printf("%3d", a.head->nbr);
-			a.head = a.head->next;
-		}
-		else
-			printf("   ");
-		printf(" ");
-		if (b.size >= i)
-		{
-			printf("%3d", b.head->nbr);
-			b.head = b.head->next;
-		}
-		else
-			printf("   ");
-		printf("\n");
-		i--;
-	}
-	printf("___ ___\n");
-	printf("  a   b\n");
+	if (from->size == 0)
+		return ;
+	n = ft_pop(from);
+	ft_push(to, n);
+	if (msg)
+		ft_printf("%s\n", msg);
 }

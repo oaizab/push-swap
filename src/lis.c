@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:08:49 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 10:10:07 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/10 10:35:00 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,18 @@ int	*ft_fill(t_slist *lst, int size)
 
 void	fill_keeps(t_stack A, int *arr, int *length, int *sub)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	t_slist	*tmp;
 
 	i = ft_maxi(length, A.size);
+	tmp = A.tail;
 	j = length[i] +1;
 	while (--j > 0)
 	{
-		while (A.tail->nbr != arr[i])
-			A.tail = A.tail->prev;
-		A.tail->keep_in_a = 1;
+		while (tmp->nbr != arr[i])
+			tmp = tmp->prev;
+		tmp->keep_in_a = 1;
 		i = sub[i];
 	}
 }
