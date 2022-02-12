@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:08:49 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 10:35:00 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/12 17:26:55 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	fill_keeps(t_stack A, int *arr, int *length, int *sub)
 		tmp->keep_in_a = 1;
 		i = sub[i];
 	}
+	free(arr);
+	free(length);
+	free(sub);
 }
 
 // longest increasing subsequence

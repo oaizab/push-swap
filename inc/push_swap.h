@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 12:45:52 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 13:53:27 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/12 16:45:05 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,22 @@
 # include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+
+//
+// Defining moves
+//
+
+# define PA 11
+# define PB 12
+# define SA 21
+# define SB 22
+# define SS 23
+# define RA 31
+# define RB 32
+# define RR 33
+# define RRA 41
+# define RRB 42
+# define RRR 43
 
 //
 // Defining structures
@@ -47,6 +63,8 @@ void	ft_clear_stack(t_stack **stack);
 int		ft_top(t_stack *stack);
 void	ft_show(t_stack a, t_stack b);
 void	push_b(t_stack *a, t_stack *b);
+void	push_a(t_stack *a, t_stack *b);
+int		stack_min(t_stack *s, int *min);
 
 //
 // Stack operation functions

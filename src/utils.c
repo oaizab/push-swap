@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 10:11:45 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 14:23:08 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/12 13:42:31 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,18 @@ void	ft_show(t_stack a, t_stack b)
 	{
 		if (a.size >= i)
 		{
-			printf("%3d", a.head->nbr);
+			printf("%3d ", a.head->nbr);
 			a.head = a.head->next;
 		}
 		else
-			printf("   ");
-		printf(" ");
+			printf("    ");
 		if (b.size >= i)
 		{
-			printf("%3d", b.head->nbr);
+			printf("%3d\n", b.head->nbr);
 			b.head = b.head->next;
 		}
 		else
-			printf("   ");
-		printf("\n");
+			printf("   \n");
 		i--;
 	}
 	printf("___ ___\n");
