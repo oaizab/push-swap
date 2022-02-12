@@ -7,3 +7,5 @@ push_swap
 !.gitignore
 !.gitmodules
 checker_Mac
+checker
+benchmark.sh

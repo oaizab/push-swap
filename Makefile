@@ -7,7 +7,8 @@ SRCS	=	main.c \
 			sx.c \
 			rx.c \
 			rrx.c \
-			push_b.c
+			push_b.c \
+			push_a.c
 
 ODIR	=	obj
 OBJS	=	$(addprefix $(ODIR)/,$(SRCS:.c=.o))
