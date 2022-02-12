@@ -6,33 +6,11 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:36:45 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/12 13:41:30 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/13 15:00:39 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	stack_min(t_stack *s, int *min)
-{
-	t_slist	*tmp;
-	int		min_index;
-	int		i;
-
-	tmp = s->head;
-	*min = tmp->nbr;
-	i = 0;
-	while (tmp)
-	{
-		i++;
-		if (tmp->nbr < *min)
-		{
-			*min = tmp->nbr;
-			min_index = i;
-		}
-		tmp = tmp->next;
-	}
-	return (min_index);
-}
 
 int	has_keep_a(t_stack *s)
 {
@@ -52,16 +30,37 @@ void	push_b(t_stack *a, t_stack *b)
 {
 	int	min;
 	int	i;
+	int	n;
 
 	i = stack_min(a, &min);
+	n = 0;
 	while (a->head->nbr != min)
 	{
 		if (i <= ((a->size) / 2))
-			rx(a, "ra");
+		{
+			rx(a, NULL);
+			n++;
+		}
 		else
-			(rrx(a, "rra"));
+		{
+			(rrx(a, NULL));
+			n--;
+		}
 	}
 	lis(*a);
+	while (n != 0)
+	{
+		if (n > 0)
+		{
+			rrx(a, NULL);
+			n--;
+		}
+		else
+		{
+			(rx(a, NULL));
+			n++;
+		}
+	}
 	while (a->size > 0 && !has_keep_a(a))
 	{
 		if (a->head->keep_in_a)

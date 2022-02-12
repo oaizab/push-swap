@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:35:18 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/12 19:46:58 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/13 15:54:26 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,12 @@ void	best_move(t_stack *a, t_stack *b, int t[])
 
 	tmp_b = b->head;
 	j = 0;
-	t[0] = find_pose_a(a, tmp_b->nbr);
-	t[1] = 0;
+	t[0] = -a->size;//find_pose_a(a, tmp_b->nbr);
+	t[1] = b->size;//0;
 	while (j < b->size / 2)
 	{
+		if (ft_nmoves(0, j) >= ft_nmoves(t[0], t[1]))
+			break ;
 		i = find_pose_a(a, tmp_b->nbr);
 		if (ft_nmoves(i, j) < ft_nmoves(t[0], t[1]))
 		{
@@ -127,8 +129,11 @@ void	best_move(t_stack *a, t_stack *b, int t[])
 	j = b->size;
 	while (j > b->size / 2)
 	{
+		if (ft_nmoves(0, j - b->size - 1) >= ft_nmoves(t[0], t[1]))
+			break ;
 		i = find_pose_a(a, tmp_b->nbr);
-		if (ft_nmoves(i, j - b->size - 1) < ft_nmoves(t[0], t[1]))
+		if (ft_nmoves(i, j - b->size - 1) < ft_nmoves(t[0], t[1]) || \
+			(ft_nmoves(i, j - b->size - 1) == ft_nmoves(t[0], t[1]) && t[j] > 0))
 		{
 			t[0] = i;
 			t[1] = j - b->size - 1;
