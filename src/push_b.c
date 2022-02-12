@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:36:45 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/10 15:15:46 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/12 13:41:30 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	stack_min(t_stack *s, int *min)
 	t_slist	*tmp;
 	int		min_index;
 	int		i;
-
 
 	tmp = s->head;
 	*min = tmp->nbr;
