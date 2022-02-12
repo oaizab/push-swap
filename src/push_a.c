@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:35:18 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/12 17:09:06 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/12 19:46:58 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,7 @@ int	ft_nmoves(int a, int b)
 		return (ft_abs(a) + ft_abs(b) + 1);
 	a = ft_abs(a);
 	b = ft_abs(b);
-	while (a > 0 && b > 0)
-	{
-		n++;
-		a--;
-		b--;
-	}
-	return (n + a + b + 1);
+	return (ft_max(a, b) + 1);
 }
 
 int	ft_move(int t[])
