@@ -6,13 +6,13 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:08:41 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/16 16:54:21 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/16 17:01:17 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_atoi_i(char **tab, int k)
+int	ft_atoi_i(char **tab, int k)
 {
 	long	nb;
 	int		i;
@@ -65,8 +65,6 @@ char	**ft_get_args(char **tab, int l)
 	}
 	args = ft_split(str, ' ');
 	free(str);
-	if (!args)
-		ft_memerr();
 	return (args);
 }
 
@@ -77,6 +75,8 @@ int	ft_parser(int ac, char *av[], int *tab[])
 	int		i;
 
 	args = ft_get_args(av, ac);
+	if (!args)
+		ft_memerr();
 	i = 0;
 	size = 0;
 	while (args[size])
