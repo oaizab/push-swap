@@ -8,13 +8,15 @@ SRCS	=	main.c \
 			rx.c \
 			rrx.c \
 			push_b.c \
-			push_a.c
+			push_a.c \
+			push_swap.c \
+			exit.c
 
 ODIR	=	obj
 OBJS	=	$(addprefix $(ODIR)/,$(SRCS:.c=.o))
 
 IDIR	=	inc
-INCL	=
+INCL	=	push_swap.h
 HEADER	=	$(addprefix $(IDIR)/,$(INCL)) libft/inc/libft.h
 INCLUDE	=	-I$(IDIR) -Ilibft/inc
 

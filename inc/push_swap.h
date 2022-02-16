@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 12:45:52 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/12 16:45:05 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:54:31 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,15 @@ typedef struct s_stack
 
 t_stack	*ft_stack(void);
 void	ft_push(t_stack *stack, int nbr);
+void	ft_addlast(t_stack *s, int n);
 int		ft_pop(t_stack *s);
-void	ft_clear_stack(t_stack **stack);
-int		ft_top(t_stack *stack);
-void	ft_show(t_stack a, t_stack b);
+void	ft_clear_stack(t_stack *stack);
 void	push_b(t_stack *a, t_stack *b);
 void	push_a(t_stack *a, t_stack *b);
 int		stack_min(t_stack *s, int *min);
+int		stack_max(t_stack *s, int *max);
+int		ft_move(int t[]);
+int		ft_nmoves(int a, int b);
 
 //
 // Stack operation functions
@@ -79,10 +81,19 @@ void	rrx(t_stack *s, char *msg);
 void	rrr(t_stack *a, t_stack *b, char *msg);
 
 //
-// Sorting function
+// Sorting functions
 //
 
-void	ft_sort(t_stack **stack_1, t_stack **stack_2);
+void	ft_sort(t_stack *stack_1, t_stack *stack_2);
 void	lis(t_stack A);
+
+//
+// Extra functions
+
+void	ft_error(t_stack *s);
+void	ft_memerr(void);
+void	ft_freetab(char **tab, int i);
+int		ft_parser(int ac, char *av[], int *tab[]);
+int		ft_checkdup(int t[], int size);
 
 #endif

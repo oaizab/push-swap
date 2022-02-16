@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 15:03:49 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/16 16:57:42 by oaizab           ###   ########.fr       */
+/*   Created: 2022/02/13 22:09:42 by oaizab            #+#    #+#             */
+/*   Updated: 2022/02/16 14:35:28 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_freetab(char **tab, int i)
 {
-	t_stack	*a;
-	t_stack	*b;
-	int		*t;
-	int		size;
-
-	if (argc == 1)
-		return (0);
-	t = NULL;
-	size = ft_parser(argc, argv, &t);
-	if (ft_checkdup(t, size))
-		(free(t), ft_error(NULL));
-	a = ft_stack();
-	while(size > 0)
+	if (!tab)
+		return ;
+	while (tab[i])
 	{
-		ft_push(a, t[size - 1]);
-		size--;
+		free(tab[i++]);
 	}
-	free(t);
-	b = ft_stack();
-	push_b(a, b);
-	push_a(a, b);
-	ft_clear_stack(a);
-	ft_clear_stack(b);
-	free(a);
-	free(b);
-	return (0);
+	free(tab);
+}
+
+void	ft_memerr(void)
+{
+	ft_printf("Can't allocate memory.\n");
+	exit(1);
+}
+
+void	ft_error(t_stack *s)
+{
+	if (s)
+	{
+		ft_clear_stack(s);
+		free(s);
+	}
+	ft_putendl_fd("Error", 2);
+	exit(1);
 }

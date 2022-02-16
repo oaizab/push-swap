@@ -6,103 +6,42 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 14:35:18 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/13 15:54:26 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/16 15:24:28 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_nmoves(int a, int b)
-{
-	int	n;
-
-	n = 0;
-	if (a * b <= 0)
-		return (ft_abs(a) + ft_abs(b) + 1);
-	a = ft_abs(a);
-	b = ft_abs(b);
-	return (ft_max(a, b) + 1);
-}
-
-int	ft_move(int t[])
-{
-	if (t[0] == 0 && t[1] == 0)
-		return (PA);
-	else if (t[0] > 0)
-	{
-		t[0]--;
-		if (t[1] > 0)
-			return (t[1]--, RR);
-		return (RA);
-	}
-	else if (t[0] < 0)
-	{
-		t[0]++;
-		if (t[1] < 0)
-			return (t[1]++, RRR);
-		return (RRA);
-	}
-	else if (t[1] > 0)
-		return (t[1]--, RB);
-	t[1]++;
-	return (RRB);
-}
-
-int	stack_max(t_stack *s, int *max)
-{
-	t_slist	*tmp;
-	int		max_index;
-	int		i;
-
-	tmp = s->head;
-	*max = tmp->nbr;
-	i = 0;
-	while (tmp)
-	{
-		i++;
-		if (tmp->nbr < *max)
-		{
-			*max = tmp->nbr;
-			max_index = i;
-		}
-		tmp = tmp->next;
-	}
-	return (max_index);
-}
-
 int	find_pose_a(t_stack *a, int n)
 {
 	t_slist	*tmp_a;
-	int 	i;
-	int		max;
+	int		i[2];
 
 	tmp_a = a->head;
 	if (n < a->head->nbr && n > a->tail->nbr)
 		return (0);
-	i = 1;
-	while (i < a->size / 2)
+	i[0] = 0;
+	while (++i[0] < a->size / 2)
 	{
 		if (n > tmp_a->nbr && n < tmp_a->next->nbr)
-			return (i);
+			return (i[0]);
 		tmp_a = tmp_a->next;
-		i++;
 	}
 	tmp_a = a->tail;
-	i = a->size;
-	while (i > a->size / 2)
+	i[0] = a->size + 1;
+	while (--i[0] > a->size / 2)
 	{
 		if (n > tmp_a->prev->nbr && n < tmp_a->nbr)
-			return (i - a->size - 1);
+			return (i[0] - a->size - 1);
 		tmp_a = tmp_a->prev;
-		i--;
 	}
-	i = stack_max(a, &max);
-	if (i < a->size /2)
-		return (i - 1);
-	return (i - a->size - 1);
+	i[0] = stack_max(a, &i[1]);
+	if (i[0] < a->size / 2)
+		return (i[0] - 1);
+	return (i[0] - a->size - 1);
 }
 
-void	best_move(t_stack *a, t_stack *b, int t[])
+void	first_half(t_stack *a, t_stack *b, int t[])
 {
 	int		i;
 	int		j;
@@ -110,8 +49,8 @@ void	best_move(t_stack *a, t_stack *b, int t[])
 
 	tmp_b = b->head;
 	j = 0;
-	t[0] = -a->size;//find_pose_a(a, tmp_b->nbr);
-	t[1] = b->size;//0;
+	t[0] = -a->size;
+	t[1] = b->size;
 	while (j < b->size / 2)
 	{
 		if (ft_nmoves(0, j) >= ft_nmoves(t[0], t[1]))
@@ -125,6 +64,14 @@ void	best_move(t_stack *a, t_stack *b, int t[])
 		tmp_b = tmp_b->next;
 		j++;
 	}
+}
+
+void	second_half(t_stack *a, t_stack *b, int t[])
+{
+	int		i;
+	int		j;
+	t_slist	*tmp_b;
+
 	tmp_b = b->tail;
 	j = b->size;
 	while (j > b->size / 2)
@@ -132,8 +79,7 @@ void	best_move(t_stack *a, t_stack *b, int t[])
 		if (ft_nmoves(0, j - b->size - 1) >= ft_nmoves(t[0], t[1]))
 			break ;
 		i = find_pose_a(a, tmp_b->nbr);
-		if (ft_nmoves(i, j - b->size - 1) < ft_nmoves(t[0], t[1]) || \
-			(ft_nmoves(i, j - b->size - 1) == ft_nmoves(t[0], t[1]) && t[j] > 0))
+		if (ft_nmoves(i, j - b->size - 1) < ft_nmoves(t[0], t[1]))
 		{
 			t[0] = i;
 			t[1] = j - b->size - 1;
@@ -143,36 +89,42 @@ void	best_move(t_stack *a, t_stack *b, int t[])
 	}
 }
 
+void	move(t_stack *a, t_stack *b, int t[])
+{
+	int	m;
+
+	m = ft_move(t);
+	while (m != PA)
+	{
+		if (m == RA)
+			rx(a, "ra");
+		else if (m == RB)
+			rx(b, "rb");
+		else if (m == RR)
+			rr(a, b, "rr");
+		else if (m == RRA)
+			rrx(a, "rra");
+		else if (m == RRB)
+			rrx(b, "rrb");
+		else if (m == RRR)
+			rrr(a, b, "rrr");
+		m = ft_move(t);
+	}
+	px(b, a, "pa");
+}
+
 void	push_a(t_stack *a, t_stack *b)
 {
 	int		t[2];
-	int		m;
+	int		min;
+	int		i;
 
 	while (b->size > 0)
 	{
-		best_move(a, b, t);
-		m = ft_move(t);
-		while (m != PA)
-		{
-			if (m == RA)
-				rx(a, "ra");
-			else if (m == RB)
-				rx(b, "rb");
-			else if (m == RR)
-				rr(a, b, "rr");
-			else if (m == RRA)
-				rrx(a, "rra");
-			else if (m == RRB)
-				rrx(b, "rrb");
-			else if (m == RRR)
-				rrr(a, b, "rrr");
-			m = ft_move(t);
-		}
-		px(b, a, "pa");
+		first_half(a, b, t);
+		second_half(a, b, t);
+		move(a, b, t);
 	}
-	int	min;
-	int	i;
-
 	i = stack_min(a, &min);
 	while (a->head->nbr != min)
 	{
