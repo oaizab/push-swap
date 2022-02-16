@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:08:41 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/16 17:01:17 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/16 18:18:53 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ int	ft_atoi_i(char **tab, int k)
 	}
 	while (tab[k][i])
 	{
-		if ((tab[k][i] >= '0' && tab[k][i] <= '9') && \
-			((nb < 2147483647 && sign > 0) || (nb < 2147483648 && sign < 0)))
+		if ((tab[k][i] >= '0' && tab[k][i] <= '9'))
 			nb = nb * 10 + (tab[k][i++] - '0');
 		else
 			(ft_freetab(tab, k), ft_error(NULL));
 	}
+	if ((nb > 2147483647 && sign > 0) || (nb > 2147483648 && sign < 0))
+		(ft_freetab(tab, k), ft_error(NULL));
 	return (nb * sign);
 }
 
