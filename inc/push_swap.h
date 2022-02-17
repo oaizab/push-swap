@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 12:45:52 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/16 19:26:02 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/17 16:50:46 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,17 @@ void	rrr(t_stack *a, t_stack *b, char *msg);
 
 void	ft_sort(t_stack *a, t_stack *b);
 void	lis(t_stack A);
+int		ft_sorted(t_stack *a);
+
+//
+// Checker functions
+//
+
+void	check(t_stack *a, t_stack *b);
 
 //
 // Extra functions
+//
 
 void	ft_error(t_stack *s);
 void	ft_memerr(void);

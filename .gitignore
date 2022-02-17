@@ -8,6 +8,7 @@ push_swap
 !.gitmodules
 checker_Mac
 checker
+checker_os
 benchmark.sh
 problem_100
 push_swap.dSYM/Contents/
