@@ -6,11 +6,30 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 16:41:26 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/17 17:22:29 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/17 18:36:18 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	get_cmd_next(char *str)
+{
+	int	cmd;
+
+	if (ft_strncmp(str, "rrb\n", 10) == 0)
+		cmd = RRB;
+	else if (ft_strncmp(str, "rrr\n", 10) == 0)
+		cmd = RRR;
+	else if (ft_strncmp(str, "sa\n", 10) == 0)
+		cmd = SA;
+	else if (ft_strncmp(str, "sb\n", 10) == 0)
+		cmd = SB;
+	else if (ft_strncmp(str, "ss\n", 10) == 0)
+		cmd = SS;
+	else
+		cmd = -1;
+	return (cmd);
+}
 
 int	get_cmd(char *str)
 {
@@ -28,18 +47,8 @@ int	get_cmd(char *str)
 		cmd = RR;
 	else if (ft_strncmp(str, "rra\n", 10) == 0)
 		cmd = RRA;
-	else if (ft_strncmp(str, "rrb\n", 10) == 0)
-		cmd = RRB;
-	else if (ft_strncmp(str, "rrr\n", 10) == 0)
-		cmd = RRR;
-	else if (ft_strncmp(str, "sa\n", 10) == 0)
-		cmd = SA;
-	else if (ft_strncmp(str, "sb\n", 10) == 0)
-		cmd = SB;
-	else if (ft_strncmp(str, "ss\n", 10) == 0)
-		cmd = SS;
 	else
-		cmd = -1;
+		cmd = get_cmd_next(str);
 	return (cmd);
 }
 

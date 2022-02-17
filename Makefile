@@ -79,11 +79,11 @@ bonus: $(OBJSB)
 
 clean:
 	@make -C libft clean
-	@$(RM) $(OBJS) $(ODIR)
+	@$(RM) $(OBJS) $(OBJSB) $(ODIR)
 
 fclean: clean
 	@make -C libft fclean
-	@$(RM) $(OUTPUT)/$(NAME)
+	@$(RM) $(OUTPUT)/$(NAME) $(OUTPUT)/checker
 
 re: fclean all
 
