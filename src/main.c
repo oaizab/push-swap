@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:03:49 by oaizab            #+#    #+#             */
-/*   Updated: 2022/02/16 18:20:13 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/02/16 19:33:23 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	main(int argc, char **argv)
 	}
 	free(t);
 	b = ft_stack();
-	push_b(a, b);
-	push_a(a, b);
+	ft_sort(a, b);
 	(ft_clear_stack(a), free(a));
 	(ft_clear_stack(b), free(b));
 	return (0);
